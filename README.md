@@ -5,17 +5,24 @@
 
 ### Installation Instructions
 **Google Chrome**
-1. Download this repo as a [ZIP file from GitHub](todo).
-2. Unzip the file and you should have a folder named `hidethingsonsocialmedia-master`.
+1. Download this repo as a [ZIP file from GitHub](https://github.com/SibianDG/HideThingsOnSocialMedia/archive/master.zip).
+2. Unzip the file, and you should have a folder named `HideThingsOnSocialMedia-master`.
 3. In Chrome go to the extensions page (`chrome://extensions`).
 4. Enable Developer Mode.
-5. Drag the `hidethingsonsocialmedia-master` folder anywhere on the page to import it (do not delete the folder afterwards).
+5. Drag the `HideThingsOnSocialMedia-master` folder anywhere on the page to import it (do not delete the folder afterwards).
 
 **Mozilla Firefox**
-- Install from the [Add-ons store](todo)
+- Install from the [Add-ons store(coming soon)](todo)
+
+### Supported sites
+- Facebook
+- Instagram
+- Messenger
+- Strava
+- YouTube
 
 ### New site requests
-If you want to sites to be added in the extension, look in [Issues](todo) if your site is in the list. If not, make a new `Issue` and give the site and explain what needs to be hidden.
+If you want to sites to be added in the extension, look in [Issues](https://github.com/SibianDG/HideThingsOnSocialMedia/issues) if your site is in the list. If not, make a new `Issue` and give the site and explain what needs to be hidden.
 
 ### Troubleshooting
 If it doesn't work, try to refresh the page or close the browser. If it isn't fixed, make an `Issue` on Github.
