@@ -10,6 +10,7 @@
 3. In Chrome go to the extensions page (`chrome://extensions`).
 4. Enable Developer Mode.
 5. Drag the `HideThingsOnSocialMedia-master` folder anywhere on the page to import it (do not delete the folder afterwards).
+6. Pin the extension to the top bar by clicking on the Extension-icon (Puzzle)
 
 **Mozilla Firefox**
 - Install from the [Add-ons store(coming soon)](todo)
