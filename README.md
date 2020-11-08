@@ -13,7 +13,7 @@
 6. Pin the extension to the top bar by clicking on the Extension-icon (Puzzle)
 
 **Mozilla Firefox**
-- Install from the [Add-ons store(coming soon)](todo)
+- Install from the [Add-ons store](https://addons.mozilla.org/en-GB/firefox/addon/hide-things-on-social-media/)
 
 ### Supported sites
 - Facebook
