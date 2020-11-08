@@ -4,6 +4,10 @@ function setTitle(){
     document.title = 'facebook';
 }
 
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 class website {
     constructor(name, viaClass = true) {
         this._name = name;
@@ -68,7 +72,13 @@ class website {
     async getFromStorage() {
         chrome.storage.sync.get(items => {
             if (!items[this._name]){
-                this._needsToBeVisable = [...this._allClasses];
+                sleep(1000).then(() => {
+                    if (!items[this._name]){
+                        this._needsToBeVisable = [...this._allClasses];
+                    } else {
+                        this.changeAndCheckClasses(items);
+                    }
+                });
             } else {
                 this.changeAndCheckClasses(items);
             }
@@ -130,9 +140,10 @@ function init(){
             theWebsite.addToList("overviewLeft","rq0escxv lpgh02oy du4w35lb pad24vr5 rirtxc74 dp1hu0rb fer614ym bx45vsiw o387gat7 qbu88020 ni8dbmo4 stjgntxs czl6b2yu");
         } else if (msg.url.includes("youtube.com")){
             theWebsite = new website("youtube", false)
-            theWebsite.addToList("recomandationsHome", "contents");
-            theWebsite.addToList("recomandationsVid", "items");
-            theWebsite.addToList("recomandationsVid", "secondary");
+            theWebsite.addToList("recommendationsHome", "contents");
+            theWebsite.addToList("recommendationsHome", "primary");
+            theWebsite.addToList("recommendationsVid", "items");
+            theWebsite.addToList("recommendationsVid", "secondary");
             theWebsite.addToList("comments", "comments");
         } else if (msg.url.includes("instagram.com")){
             theWebsite = new website("instagram", true)
