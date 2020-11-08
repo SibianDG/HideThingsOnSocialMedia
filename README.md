@@ -13,7 +13,8 @@
 6. Pin the extension to the top bar by clicking on the Extension-icon (Puzzle)
 
 **Mozilla Firefox**
-- Install from the [Add-ons store](https://addons.mozilla.org/en-GB/firefox/addon/hide-things-on-social-media/)
+1. Install from the [Add-ons store](https://addons.mozilla.org/en-GB/firefox/addon/hide-things-on-social-media/)
+2. Go to `Manage Your Extensions`. Click on the three dots for this extension and click `manage`. Set `Allow automatic updates` on `On`.
 
 ### Supported sites
 - Facebook
