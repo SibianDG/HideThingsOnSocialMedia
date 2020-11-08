@@ -1,4 +1,4 @@
-
+let urlNow;
 // todo: search stackoverflow -> addLisntener?
 function setTitle(){
     document.title = 'facebook';
@@ -60,7 +60,12 @@ class website {
     changeAndCheckClasses(items){
         this._allClasses.forEach(el => {
             if (items[this._name].removeTrue.includes(el.what)){
-                this._needToBeHidden.push(el.cta);
+                console.log("URL", urlNow)
+                if (!urlNow.endsWith("youtube.com/") && el.cta.id === "primary"){
+                    this._needsToBeVisable.push(el.cta);
+                } else {
+                    this._needToBeHidden.push(el.cta);
+                }
             } else {
                 this._needsToBeVisable.push(el.cta);
             }
@@ -130,7 +135,8 @@ function init(){
     port.postMessage({asking: true});
     port.onMessage.addListener(function(msg) {
         let theWebsite;
-        if (msg.url.includes("facebook.com")){
+        urlNow = msg.url;
+        if (urlNow.includes("facebook.com")){
             theWebsite = new website("facebook", true)
             theWebsite.addToList("navigation","oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 j83agx80 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl l9j0dhe7 abiwlrkh p8dawk7l bp9cbjyn cbu4d94t pi1r6xr4 taijpn5t k4urcfbm");
             theWebsite.addToList("navigation","oajrlxb2 tdjehn4e qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 j83agx80 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl l9j0dhe7 abiwlrkh p8dawk7l bp9cbjyn s45kfl79 emlxlaya bkmhp75w spb7xbtv rt8b4zig n8ej3o3l agehan2d sk4xxmp2 taijpn5t qypqp5cg q676j6op");
@@ -138,25 +144,26 @@ function init(){
             theWebsite.addToList("rooms","gs1a9yip kb5gq1qc pfnyh3mw hpfvmrgz qdtcsgvi oi9244e8 t7l9tvuc");
             theWebsite.addToList("rightColumn","d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a5q79mjw g1cxx5fr lrazzd5p m9osqain");
             theWebsite.addToList("overviewLeft","rq0escxv lpgh02oy du4w35lb pad24vr5 rirtxc74 dp1hu0rb fer614ym bx45vsiw o387gat7 qbu88020 ni8dbmo4 stjgntxs czl6b2yu");
-        } else if (msg.url.includes("youtube.com")){
+        } else if (urlNow.includes("youtube.com")){
+            //todo: YT don't refresh whole page when you click item...
             theWebsite = new website("youtube", false)
             theWebsite.addToList("recommendationsHome", "contents");
             theWebsite.addToList("recommendationsHome", "primary");
             theWebsite.addToList("recommendationsVid", "items");
             theWebsite.addToList("recommendationsVid", "secondary");
             theWebsite.addToList("comments", "comments");
-        } else if (msg.url.includes("instagram.com")){
+        } else if (urlNow.includes("instagram.com")){
             theWebsite = new website("instagram", true)
             theWebsite.addToList("stories", "zGtbP IPQK5 VideM");
             theWebsite.addToList("rightColumn", "COOzN MnWb5 YT6rB");
             theWebsite.addToList("accountActivity", "_0ZPOP kIKUG");
             theWebsite.addToList("main", "SCxLW  o64aR");
-        } else if (msg.url.includes("messenger.com")){
+        } else if (urlNow.includes("messenger.com")){
             theWebsite = new website("messenger", true)
             theWebsite.addToList("profilePictures", "_1qt3 _6-5k _5l-3");
             theWebsite.addToList("profilePictures", "_5bli _2_a2 img");
             theWebsite.addToList("profilePictures", "_87u_ img");
-        } else if (msg.url.includes("strava.com")){
+        } else if (urlNow.includes("strava.com")){
             theWebsite = new website("strava", false)
             theWebsite.addToList("columnLeft", "dashboard-athlete-sidebar");
             theWebsite.addToList("newsFeed", "dashboard-feed");
