@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Hide Things On Social Media",
   "description": "Hide things on social media with this extension. Choose what you want to hide or not.",
-  "version": "1.0",
+  "version": "1.2",
 
   "content_scripts": [
     {
