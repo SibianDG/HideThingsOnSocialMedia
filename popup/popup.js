@@ -120,7 +120,7 @@ function init() {
             theWebsite.makeHTMLinPopup(['navigation', 'rightColumn', 'newsFeed', 'overviewLeft']);
         } else if (msg.url.includes("youtube.com")) {
             theWebsite = new website("youtube");
-            theWebsite.makeHTMLinPopup(['recommendationsHome', 'recommendationsVid', 'comments']);
+            theWebsite.makeHTMLinPopup(['recommendationsHome', 'recommendationsVideo', 'comments']);
         } else if (msg.url.includes("instagram.com")) {
             theWebsite = new website("instagram");
             theWebsite.makeHTMLinPopup(['stories', 'rightColumn', 'accountActivity', 'main']);

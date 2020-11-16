@@ -27,8 +27,14 @@ class website {
             if (this._name === "facebook"){
                 all.forEach(classToAdd => {
                     if (what === "rightColumn"){
-                        classToAdd = classToAdd.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-                        this._allClasses.push({what : what, cta: classToAdd});
+                        if (string === "rq0escxv lpgh02oy du4w35lb pad24vr5 rirtxc74 dp1hu0rb fer614ym hlyrhctz o387gat7 qbu88020 ni8dbmo4 stjgntxs czl6b2yu"){
+                            if (classToAdd.getAttribute("role").includes("complementary")){
+                                this._allClasses.push({what : what, cta: classToAdd});
+                            }
+                        } else {
+                            classToAdd = classToAdd.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+                            this._allClasses.push({what : what, cta: classToAdd});
+                        }
                     } else if (what === "navigation") {
                         if (this.checkAriaLabel(classToAdd, "Pages") || this.checkAriaLabel(classToAdd, "Watch") || this.checkAriaLabel(classToAdd, "Marketplace") || this.checkAriaLabel(classToAdd, "Messenger")) {
                             classToAdd = classToAdd.parentElement.parentElement.parentElement;
@@ -60,7 +66,6 @@ class website {
     changeAndCheckClasses(items){
         this._allClasses.forEach(el => {
             if (items[this._name].removeTrue.includes(el.what)){
-                console.log("URL", urlNow)
                 if (!urlNow.endsWith("youtube.com/") && el.cta.id === "primary"){
                     this._needsToBeVisable.push(el.cta);
                 } else {
@@ -106,10 +111,17 @@ class website {
         });
     }
 
+    linkClickerListener(){
+        document.addEventListener('click', () => {
+            console.log("click")
+            this.changeClass([...this._needToBeHidden], true);
+            this.changeClass([...this._needsToBeVisable], false);
+        });
+    }
+
     changeClass(list, remove) {
         if (list && list.length > 0){
             list.forEach(el => {
-                console.log(el)
                 try {
                     if (remove){
                         el.setAttribute( 'style', 'display: none!important;')
@@ -124,8 +136,10 @@ class website {
     }
 
     async getStarted() {
+
         await this.getFromStorage()
-            .then(() => {this.addStorageListener()});
+            .then(() => {this.addStorageListener()})
+            .then(() => this.linkClickerListener());
         //Todo? when scroll + 100 -> opnieuw classes? -> Messenger
     }
 }
@@ -143,14 +157,16 @@ function init(){
             theWebsite.addToList("newsFeed","pedkr2u6 tn0ko95a pnx7fd3z");
             theWebsite.addToList("rooms","gs1a9yip kb5gq1qc pfnyh3mw hpfvmrgz qdtcsgvi oi9244e8 t7l9tvuc");
             theWebsite.addToList("rightColumn","d2edcug0 hpfvmrgz qv66sw1b c1et5uql rrkovp55 a5q79mjw g1cxx5fr lrazzd5p m9osqain");
+            theWebsite.addToList("rightColumn","rq0escxv lpgh02oy du4w35lb pad24vr5 rirtxc74 dp1hu0rb fer614ym hlyrhctz o387gat7 qbu88020 ni8dbmo4 stjgntxs czl6b2yu");
             theWebsite.addToList("overviewLeft","rq0escxv lpgh02oy du4w35lb pad24vr5 rirtxc74 dp1hu0rb fer614ym bx45vsiw o387gat7 qbu88020 ni8dbmo4 stjgntxs czl6b2yu");
+            theWebsite.addToList("overviewLeft","rq0escxv lpgh02oy du4w35lb pad24vr5 rirtxc74 dp1hu0rb fer614ym rek2kq2y bx45vsiw o387gat7 qbu88020 ni8dbmo4 stjgntxs czl6b2yu");
         } else if (urlNow.includes("youtube.com")){
             //todo: YT don't refresh whole page when you click item...
             theWebsite = new website("youtube", false)
             theWebsite.addToList("recommendationsHome", "contents");
             theWebsite.addToList("recommendationsHome", "primary");
-            theWebsite.addToList("recommendationsVid", "items");
-            theWebsite.addToList("recommendationsVid", "secondary");
+            theWebsite.addToList("recommendationsVideo", "items");
+            theWebsite.addToList("recommendationsVideo", "secondary");
             theWebsite.addToList("comments", "comments");
         } else if (urlNow.includes("instagram.com")){
             theWebsite = new website("instagram", true)
