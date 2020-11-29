@@ -64,12 +64,24 @@ class website {
     }
 
     changeAndCheckClasses(items){
+        console.log(items)
         this._allClasses.forEach(el => {
             if (items[this._name].removeTrue.includes(el.what)){
-                if (!urlNow.endsWith("youtube.com/") && el.cta.id === "primary"){
-                    this._needsToBeVisable.push(el.cta);
+                if (el.cta){
+                    if ((!urlNow.endsWith("youtube.com/") || !urlNow.endsWith("youtube.com")) && el.cta.id === "primary"){
+                        this._needsToBeVisable.push(el.cta);
+                    } else if(el.cta.id === "items" && document.getElementById("upnext")) {
+                        this._needToBeHidden.push(el.cta);
+                        this._needToBeHidden.push(document.getElementById("related"));
+                        this._needToBeHidden.push(document.getElementById("secondary-inner"));
+                        this._needToBeHidden.push(document.getElementById("secondary"));
+                    } else {
+                        console.log("what", el.what, "cta", el.cta);
+
+                        this._needToBeHidden.push(el.cta);
+                    }
                 } else {
-                    this._needToBeHidden.push(el.cta);
+                    this._needsToBeVisable.push(el.cta);
                 }
             } else {
                 this._needsToBeVisable.push(el.cta);
@@ -111,14 +123,6 @@ class website {
         });
     }
 
-    linkClickerListener(){
-        document.addEventListener('click', () => {
-            console.log("click")
-            this.changeClass([...this._needToBeHidden], true);
-            this.changeClass([...this._needsToBeVisable], false);
-        });
-    }
-
     changeClass(list, remove) {
         if (list && list.length > 0){
             list.forEach(el => {
@@ -139,8 +143,6 @@ class website {
 
         await this.getFromStorage()
             .then(() => {this.addStorageListener()})
-            .then(() => this.linkClickerListener());
-        //Todo? when scroll + 100 -> opnieuw classes? -> Messenger
     }
 }
 
@@ -191,5 +193,6 @@ function init(){
         }
     });
 }
+document.addEventListener('click', () => init());
 
 init();
