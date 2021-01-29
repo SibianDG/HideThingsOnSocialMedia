@@ -53,10 +53,9 @@ class website {
                         this._allClasses.push({what : what, cta: classToAdd});
                     } else if(what === "rightColumn2"){
                         console.log("rightColumn2")
-                        if (classToAdd.getAttribute("data-pagelet"))
-                            if (classToAdd.getAttribute("data-pagelet").includes("RightRail"))
-                                console.log("RightRail222222")
-                                this._allClasses.push({what : what, cta: classToAdd});
+                        if (classToAdd.getAttribute("data-pagelet") && classToAdd.getAttribute("data-pagelet").includes("RightRail"))
+                            console.log("RightRail222222")
+                            this._allClasses.push({what : "rightColumn", cta: classToAdd});
                     }
                 });
             } else if (this._name === "messenger"){
