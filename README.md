@@ -38,3 +38,16 @@ PRs are welcome.
 ### Show your support
 * Follow me on Github or on my [site](https://sibiandg.be) for updates.
 * Donations are welcome. Contact me on my [site](https://sibiandg.be/#contact). You can also star this repo.
+
+## Block websites on your machine?
+
+### Windows
+1. Go to `C:\Windows\System32\drivers\etc`
+2. Open hosts (with Atom, notepad or something else)
+3. Add websites which you no longer want access to.
+4. Add at the end of the file:
+5. `127.0.0.1 www.facebook.com`
+6. `127.0.0.1 facebook.com` # if the www. doesn't work.
+
+### Mac & Linux
+https://setapp.com/how-to/edit-mac-hosts-file
